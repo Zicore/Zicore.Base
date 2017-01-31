@@ -53,8 +53,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="JsonSerialzableTestValues.cs" />
+    <Compile Include="JsonSerializableTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zicore.Base\Zicore.Base.csproj">
+      <Project>{831d83a0-7348-4d8c-9857-7b336f7d91ea}</Project>
+      <Name>Zicore.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
