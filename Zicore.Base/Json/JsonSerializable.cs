@@ -16,6 +16,8 @@ namespace Zicore.Base.Json
         }
 
         private bool _isLoaded;
+
+        [JsonIgnore]
         public bool IsLoaded
         {
             get { return _isLoaded; }
@@ -119,6 +121,12 @@ namespace Zicore.Base.Json
         public static bool Exists(String filePath)
         {
             return File.Exists(filePath);
+        }
+
+        public virtual void Save(String applicationName, String fileName)
+        {
+            FilePath = GetFilePath(applicationName, fileName);
+            Save(FilePath);
         }
 
         public virtual void Save(String path)

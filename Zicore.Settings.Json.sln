@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zicore.Base", "Zicore.Base.csproj", "{831D83A0-7348-4D8C-9857-7B336F7D91EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zicore.Base", "Zicore.Base\Zicore.Base.csproj", "{831D83A0-7348-4D8C-9857-7B336F7D91EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zicore.Base.Test", "Zicore.Base.Test\Zicore.Base.Test.csproj", "{96C5731A-C2C3-43EC-A7CB-B19695D83FD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{831D83A0-7348-4D8C-9857-7B336F7D91EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{831D83A0-7348-4D8C-9857-7B336F7D91EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{831D83A0-7348-4D8C-9857-7B336F7D91EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C5731A-C2C3-43EC-A7CB-B19695D83FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C5731A-C2C3-43EC-A7CB-B19695D83FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C5731A-C2C3-43EC-A7CB-B19695D83FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C5731A-C2C3-43EC-A7CB-B19695D83FD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
