@@ -8,6 +8,11 @@ using Newtonsoft.Json.Linq;
 
 namespace Zicore.Base.Json
 {
+    public enum Folder
+    {
+           
+    }
+
     public class JsonSerializable
     {
         public JsonSerializable()
@@ -33,9 +38,15 @@ namespace Zicore.Base.Json
             set { _filePath = value; }
         }
 
-        public void Load(String applicationName, String fileName)
+        public void LoadFromAppData(String fileName, String applicationName)
         {
-            FilePath = GetFilePath(applicationName, fileName);
+            FilePath = GetAppDataFilePath(applicationName, fileName);
+            LoadFrom(FilePath);
+        }
+
+        public void LoadFromApplicationDirectory(String filename, String subdirectory = "")
+        {
+            FilePath = GetApplicationDirectoryFilePath(filename, subdirectory);
             LoadFrom(FilePath);
         }
 
@@ -104,7 +115,7 @@ namespace Zicore.Base.Json
             IsLoaded = true;
         }
 
-        public static String GetFilePath(String applicationName, String fileName)
+        public static String GetAppDataFilePath( String fileName, String applicationName)
         {
             String appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             String folderPath = Path.Combine(appDataPath, applicationName);
@@ -118,14 +129,26 @@ namespace Zicore.Base.Json
             return filePath;
         }
 
+        public static String GetApplicationDirectoryFilePath(String fileName, String subdirectory = "")
+        {
+            var applicationFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,subdirectory, fileName);
+            return applicationFolder;
+        }
+
         public static bool Exists(String filePath)
         {
             return File.Exists(filePath);
         }
 
-        public virtual void Save(String applicationName, String fileName)
+        public virtual void SaveToAppData(String fileName, String applicationName)
         {
-            FilePath = GetFilePath(applicationName, fileName);
+            FilePath = GetAppDataFilePath(applicationName, fileName);
+            Save(FilePath);
+        }
+
+        public void SaveToApplicationDirectory(String fileName, String subdirectory)
+        {
+            FilePath = GetApplicationDirectoryFilePath(fileName, subdirectory);
             Save(FilePath);
         }
 
