@@ -38,6 +38,9 @@ namespace Zicore.Base.Json
             set { _filePath = value; }
         }
 
+        [JsonIgnore]
+        public bool CreateSubdirectoryIfItNotExists { get; set; } = false;
+
         public void LoadFromAppData(String fileName, String applicationName)
         {
             FilePath = GetAppDataFilePath(applicationName, fileName);
@@ -75,6 +78,9 @@ namespace Zicore.Base.Json
         public virtual void LoadFrom(string path)
         {
             IsLoaded = false;
+
+            CreateSubDirectorie(path);
+
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException();
@@ -113,6 +119,18 @@ namespace Zicore.Base.Json
             }
 
             IsLoaded = true;
+        }
+
+        private void CreateSubDirectorie(String filePath)
+        {
+            if (CreateSubdirectoryIfItNotExists)
+            {
+                FileInfo fi = new FileInfo(filePath);
+                if (fi.DirectoryName != null && !Directory.Exists(fi.DirectoryName))
+                {
+                    Directory.CreateDirectory(fi.DirectoryName);
+                }
+            }
         }
 
         public static String GetAppDataFilePath( String fileName, String applicationName)
@@ -154,6 +172,7 @@ namespace Zicore.Base.Json
 
         public virtual void Save(String path)
         {
+            CreateSubDirectorie(path);
             String result = JsonConvert.SerializeObject(this,new JsonSerializerSettings() {TypeNameHandling = TypeNameHandling.Auto});
             var data = Encoding.UTF8.GetBytes(result);
             data = SaveFilter(data);
