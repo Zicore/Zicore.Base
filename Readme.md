@@ -1,16 +1,16 @@
 ﻿Zicore.Base
 ===
 
-I developed this library to abstract the most common tasks.
+I developed this library to abstract the most common tasks while focusing on ease of use.
 
 #### JsonSerializable
-Provides easy to use Serialization/Deserializion for Json.
+Provides Serialization/Deserializion for Json.
 
 #### JsonSerializableEncrypted
-Provides easy to use but secure AES encryption/decryption for the above.
+Provides but secure AES encryption/decryption for the above.
 
 #### HashBase
-Provides basic easy to use hash functions.
+Provides basic hash functions.
 
 #### RijndaelBase
-Abstracts the encryption/decryption logic.
+Provides encryption/decryption logic.
