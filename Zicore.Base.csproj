@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cryptography\HashBase.cs" />
-    <Compile Include="Cryptography\RijndaelSimple.cs" />
+    <Compile Include="Cryptography\RijndaelBase.cs" />
     <Compile Include="Json\JsonSerializable.cs" />
     <Compile Include="Json\JsonSettingsEncrypted.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
