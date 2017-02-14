@@ -39,6 +39,9 @@ namespace Zicore.Base.Json
         }
 
         [JsonIgnore]
+        public JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.Auto};
+
+        [JsonIgnore]
         public bool CreateSubdirectoryIfItNotExists { get; set; } = false;
 
         public void LoadFromAppData(String fileName, String applicationName)
@@ -173,7 +176,7 @@ namespace Zicore.Base.Json
         public virtual void Save(String path)
         {
             CreateSubDirectorie(path);
-            String result = JsonConvert.SerializeObject(this,new JsonSerializerSettings() {TypeNameHandling = TypeNameHandling.Auto});
+            String result = JsonConvert.SerializeObject(this, JsonSerializerSettings);
             var data = Encoding.UTF8.GetBytes(result);
             data = SaveFilter(data);
             File.WriteAllBytes(path, data);
