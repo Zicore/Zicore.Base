@@ -167,7 +167,7 @@ namespace Zicore.Base.Json
             Save(FilePath);
         }
 
-        public void SaveToApplicationDirectory(String fileName, String subdirectory)
+        public void SaveToApplicationDirectory(String fileName, String subdirectory = "")
         {
             FilePath = GetApplicationDirectoryFilePath(fileName, subdirectory);
             Save(FilePath);
