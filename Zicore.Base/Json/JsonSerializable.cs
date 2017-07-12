@@ -82,7 +82,10 @@ namespace Zicore.Base.Json
         {
             IsLoaded = false;
 
-            CreateSubDirectorie(path);
+            if (CreateSubdirectoryIfItNotExists)
+            {
+                CreateSubDirectory(path);
+            }
 
             if (!File.Exists(path))
             {
@@ -113,7 +116,7 @@ namespace Zicore.Base.Json
                                 property.SetValue(this, result, null);
                             }
                         }
-                        catch
+                        catch(Exception ex)
                         {
                             Debug.Write("Deserialization failed");
                         }
@@ -124,15 +127,12 @@ namespace Zicore.Base.Json
             IsLoaded = true;
         }
 
-        private void CreateSubDirectorie(String filePath)
+        public static void CreateSubDirectory(String filePath)
         {
-            if (CreateSubdirectoryIfItNotExists)
+            FileInfo fi = new FileInfo(filePath);
+            if (fi.DirectoryName != null && !Directory.Exists(fi.DirectoryName))
             {
-                FileInfo fi = new FileInfo(filePath);
-                if (fi.DirectoryName != null && !Directory.Exists(fi.DirectoryName))
-                {
-                    Directory.CreateDirectory(fi.DirectoryName);
-                }
+                Directory.CreateDirectory(fi.DirectoryName);
             }
         }
 
@@ -175,7 +175,10 @@ namespace Zicore.Base.Json
 
         public virtual void Save(String path)
         {
-            CreateSubDirectorie(path);
+            if (CreateSubdirectoryIfItNotExists)
+            {
+                CreateSubDirectory(path);
+            }
             String result = JsonConvert.SerializeObject(this, JsonSerializerSettings);
             var data = Encoding.UTF8.GetBytes(result);
             data = SaveFilter(data);
