@@ -46,7 +46,7 @@ namespace Zicore.Base.Json
 
         public void LoadFromAppData(String fileName, String applicationName)
         {
-            FilePath = GetAppDataFilePath(applicationName, fileName);
+            FilePath = GetAppDataFilePath(fileName, applicationName);
             LoadFrom(FilePath);
         }
 
@@ -163,7 +163,7 @@ namespace Zicore.Base.Json
 
         public virtual void SaveToAppData(String fileName, String applicationName)
         {
-            FilePath = GetAppDataFilePath(applicationName, fileName);
+            FilePath = GetAppDataFilePath(fileName, applicationName);
             Save(FilePath);
         }
 
