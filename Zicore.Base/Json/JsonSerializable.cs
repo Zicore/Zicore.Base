@@ -118,7 +118,7 @@ namespace Zicore.Base.Json
                         }
                         catch(Exception ex)
                         {
-                            Debug.Write("Deserialization failed");
+                            Debug.Write($"Deserialization failed: {ex}");
                         }
                     }
                 }
